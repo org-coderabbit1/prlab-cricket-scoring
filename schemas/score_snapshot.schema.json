@@ -9,6 +9,10 @@
     "runs": { "type": "integer", "minimum": 0 },
     "wickets": { "type": "integer", "minimum": 0 },
     "overs": { "type": "string" },
+    "raw_ball": {
+      "type": ["object", "null"],
+      "description": "Debug only. Product clients must ignore this."
+    },
     "last_event": {
       "type": "object",
       "additionalProperties": false,
