@@ -1,0 +1,25 @@
+reviews:
+  review_details: true
+knowledge_base:
+  automatic_linking_mode: disabled
+  linked_repositories:
+    - repository: "org-coderabbit1/prlab-cricket-archive"
+      instructions: "Sibling service in the same estate."
+    - repository: "org-coderabbit1/prlab-cricket-broadcast"
+      instructions: "Sibling service in the same estate."
+    - repository: "org-coderabbit1/prlab-cricket-fantasy"
+      instructions: "Sibling service in the same estate."
+    - repository: "org-coderabbit1/prlab-cricket-highlights"
+      instructions: "Sibling service in the same estate."
+    - repository: "org-coderabbit1/prlab-cricket-live-gateway"
+      instructions: "Sibling service in the same estate."
+    - repository: "org-coderabbit1/prlab-cricket-mobile"
+      instructions: "Sibling service in the same estate."
+    - repository: "org-coderabbit1/prlab-cricket-notifications"
+      instructions: "Sibling service in the same estate."
+    - repository: "org-coderabbit1/prlab-cricket-protocol"
+      instructions: "Sibling service in the same estate."
+    - repository: "org-coderabbit1/prlab-cricket-social"
+      instructions: "Sibling service in the same estate."
+    - repository: "org-coderabbit1/prlab-cricket-stats"
+      instructions: "Sibling service in the same estate."
