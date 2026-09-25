@@ -2,7 +2,16 @@ from dataclasses import dataclass
 
 from cricket_protocol import BallEvent, ExtraType, WicketKind
 
-from scoring.snapshot import LastEvent, ScoreSnapshot
+from scoring.snapshot import (
+    DeliveryExtras,
+    DeliveryWicket,
+    InningsPack,
+    LastEvent,
+    LatestDelivery,
+    LatestOver,
+    MatchPack,
+    ScoreSnapshot,
+)
 
 ILLEGAL_EXTRAS = {ExtraType.WIDE, ExtraType.NO_BALL}
 
@@ -66,6 +75,27 @@ def apply_ball(state: InningsState, event: BallEvent) -> tuple[InningsState, Sco
             runs_added=runs_added,
             wicket_counted=wicket_counted,
             legal_delivery=legal_delivery,
+        ),
+        match=MatchPack(
+            innings=InningsPack(
+                number=event.innings,
+                latest_over=LatestOver(
+                    number=event.over,
+                    latest_delivery=LatestDelivery(
+                        striker=event.striker,
+                        bowler=event.bowler,
+                        runs_off_bat=event.runs_off_bat,
+                        extras=DeliveryExtras(
+                            type=event.extras.type.value,
+                            runs=event.extras.runs,
+                        ),
+                        wicket=DeliveryWicket(
+                            kind=event.wicket.kind.value,
+                            umpire_confirmed=event.wicket.umpire_confirmed,
+                        ),
+                    ),
+                ),
+            ),
         ),
     )
     return new_state, snapshot

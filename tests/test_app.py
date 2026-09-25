@@ -25,4 +25,7 @@ def test_record_and_fetch_score() -> None:
     body = fetched.json()
     assert body["runs"] == 1
     assert body["last_event"]["display"] == "1"
-    assert "raw_ball" not in body
+    assert (
+        body["match"]["innings"]["latest_over"]["latest_delivery"]["runs_off_bat"]
+        == 1
+    )
