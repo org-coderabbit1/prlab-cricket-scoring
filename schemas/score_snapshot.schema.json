@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ScoreSnapshot",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["match_id", "runs", "wickets", "overs", "last_event"],
+  "properties": {
+    "match_id": { "type": "string" },
+    "runs": { "type": "integer", "minimum": 0 },
+    "wickets": { "type": "integer", "minimum": 0 },
+    "overs": { "type": "string" },
+    "last_event": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["display", "runs_added", "wicket_counted", "legal_delivery"],
+      "properties": {
+        "display": {
+          "type": "string",
+          "description": "Scoring-owned. Broadcast must not infer extras or wickets from other fields."
+        },
+        "runs_added": { "type": "integer" },
+        "wicket_counted": { "type": "boolean" },
+        "legal_delivery": { "type": "boolean" }
+      }
+    }
+  }
+}
