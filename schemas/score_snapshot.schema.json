@@ -9,6 +9,10 @@
     "runs": { "type": "integer", "minimum": 0 },
     "wickets": { "type": "integer", "minimum": 0 },
     "overs": { "type": "string" },
+    "match": {
+      "type": ["object", "null"],
+      "description": "Nested match pack for overlay clients. Walk match.innings.latest_over.latest_delivery."
+    },
     "last_event": {
       "type": "object",
       "additionalProperties": false,
