@@ -23,3 +23,7 @@ class ScoreSnapshot(BaseModel):
     wickets: int
     overs: str
     last_event: LastEvent
+    raw_ball: dict[str, object] | None = Field(
+        default=None,
+        description="Debug envelope of the original BallEvent. Product clients must ignore this.",
+    )

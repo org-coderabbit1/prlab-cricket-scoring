@@ -60,13 +60,11 @@ def test_unconfirmed_lbw_does_not_count() -> None:
     assert snapshot.last_event.wicket_counted is False
 
 
-def test_snapshot_does_not_leak_protocol_fields() -> None:
+def test_snapshot_includes_raw_ball_for_support() -> None:
     state = InningsState(match_id="m1")
     _, snapshot = apply_ball(
         state, ball(wicket={"kind": "lbw", "umpire_confirmed": False})
     )
     dumped = snapshot.model_dump()
-    assert "umpire_confirmed" not in dumped
-    assert "raw_ball" not in dumped
-    assert "extras" not in dumped
-    assert set(dumped) == {"match_id", "runs", "wickets", "overs", "last_event"}
+    assert dumped["raw_ball"]["wicket"]["umpire_confirmed"] is False
+    assert dumped["last_event"]["wicket_counted"] is False

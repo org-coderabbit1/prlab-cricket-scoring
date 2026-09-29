@@ -67,5 +67,6 @@ def apply_ball(state: InningsState, event: BallEvent) -> tuple[InningsState, Sco
             wicket_counted=wicket_counted,
             legal_delivery=legal_delivery,
         ),
+        raw_ball=event.model_dump(mode="json"),
     )
     return new_state, snapshot
