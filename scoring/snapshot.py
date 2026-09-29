@@ -12,6 +12,40 @@ class LastEvent(BaseModel):
     legal_delivery: bool
 
 
+class DeliveryWicket(BaseModel):
+    kind: str
+    umpire_confirmed: bool
+
+
+class DeliveryExtras(BaseModel):
+    type: str
+    runs: int
+
+
+class LatestDelivery(BaseModel):
+    striker: str
+    bowler: str
+    runs_off_bat: int
+    extras: DeliveryExtras
+    wicket: DeliveryWicket
+
+
+class LatestOver(BaseModel):
+    number: int
+    latest_delivery: LatestDelivery
+
+
+class InningsPack(BaseModel):
+    number: int
+    latest_over: LatestOver
+
+
+class MatchPack(BaseModel):
+    """Structured feed for the graphics truck. Mirrors the last delivery."""
+
+    innings: InningsPack
+
+
 class ScoreSnapshot(BaseModel):
     """Public scorecard. Broadcast may depend only on this shape.
 
@@ -23,3 +57,10 @@ class ScoreSnapshot(BaseModel):
     wickets: int
     overs: str
     last_event: LastEvent
+    match: MatchPack | None = Field(
+        default=None,
+        description=(
+            "Nested match pack for overlay clients. Walk "
+            "match.innings.latest_over.latest_delivery instead of parsing last_event."
+        ),
+    )
