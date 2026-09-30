@@ -29,10 +29,6 @@ def _display(event: BallEvent, wicket_counted: bool, runs_added: int) -> str:
         return "WIDE"
     if event.extras.type is ExtraType.NO_BALL:
         return "NO_BALL"
-    if event.runs_off_bat == 4:
-        return "FOUR"
-    if event.runs_off_bat == 6:
-        return "SIX"
     if runs_added == 0:
         return "DOT"
     return str(runs_added)
