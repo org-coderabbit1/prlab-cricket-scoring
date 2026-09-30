@@ -1,4 +1,4 @@
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Response
 from fastapi.middleware.cors import CORSMiddleware
 
 from cricket_protocol import BallEvent
@@ -34,3 +34,11 @@ def get_score(match_id: str) -> ScoreSnapshot:
     if snapshot is None:
         raise HTTPException(status_code=404, detail="unknown match")
     return snapshot
+
+
+@app.post("/matches/{match_id}/reset", status_code=204)
+def reset_match(match_id: str) -> Response:
+    """Clear a match so ops can restart it after a bad feed without a redeploy."""
+    _matches.pop(match_id, None)
+    _snapshots.pop(match_id, None)
+    return Response(status_code=204)
