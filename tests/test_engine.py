@@ -47,7 +47,7 @@ def test_confirmed_lbw_counts_wicket() -> None:
     )
     assert snapshot.wickets == 1
     assert snapshot.last_event.display == "WICKET"
-    assert snapshot.last_event.wicket_counted is True
+    assert snapshot.last_event.wicket is True
 
 
 def test_unconfirmed_lbw_does_not_count() -> None:
@@ -57,7 +57,7 @@ def test_unconfirmed_lbw_does_not_count() -> None:
     )
     assert snapshot.wickets == 0
     assert snapshot.last_event.display == "NOT_OUT"
-    assert snapshot.last_event.wicket_counted is False
+    assert snapshot.last_event.wicket is False
 
 
 def test_snapshot_does_not_leak_protocol_fields() -> None:

@@ -8,7 +8,7 @@ class LastEvent(BaseModel):
         description="Scoring-owned label: DOT, runs, FOUR, SIX, WIDE, NO_BALL, WICKET, NOT_OUT."
     )
     runs_added: int
-    wicket_counted: bool
+    wicket: bool = Field(description="True when scoring counted a dismissal on this ball.")
     legal_delivery: bool
 
 
