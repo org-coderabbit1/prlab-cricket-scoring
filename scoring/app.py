@@ -1,4 +1,4 @@
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Response
 from fastapi.middleware.cors import CORSMiddleware
 
 from cricket_protocol import BallEvent
@@ -28,9 +28,14 @@ def record_ball(match_id: str, event: BallEvent) -> ScoreSnapshot:
     return snapshot
 
 
-@app.get("/matches/{match_id}/score", response_model=ScoreSnapshot)
-def get_score(match_id: str) -> ScoreSnapshot:
+@app.get(
+    "/matches/{match_id}/score",
+    response_model=ScoreSnapshot,
+    responses={204: {"description": "No ball recorded for this match yet"}},
+)
+def get_score(match_id: str) -> ScoreSnapshot | Response:
     snapshot = _snapshots.get(match_id)
     if snapshot is None:
-        raise HTTPException(status_code=404, detail="unknown match")
+        # Dashboards poll before the first ball. That is not an error.
+        return Response(status_code=204)
     return snapshot

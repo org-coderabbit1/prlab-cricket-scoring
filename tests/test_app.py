@@ -26,3 +26,9 @@ def test_record_and_fetch_score() -> None:
     assert body["runs"] == 1
     assert body["last_event"]["display"] == "1"
     assert "raw_ball" not in body
+
+
+def test_match_without_balls_is_no_content() -> None:
+    response = client.get("/matches/not-started/score")
+    assert response.status_code == 204
+    assert response.content == b""
