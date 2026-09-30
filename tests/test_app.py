@@ -26,3 +26,9 @@ def test_record_and_fetch_score() -> None:
     assert body["runs"] == 1
     assert body["last_event"]["display"] == "1"
     assert "raw_ball" not in body
+
+
+def test_reset_clears_the_match() -> None:
+    client.post("/matches/m1/balls", json=PAYLOAD)
+    assert client.post("/matches/m1/reset").status_code == 204
+    assert client.get("/matches/m1/score").status_code == 404
