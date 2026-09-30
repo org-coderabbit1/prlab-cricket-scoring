@@ -12,14 +12,14 @@
     "last_event": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["display", "runs_added", "wicket_counted", "legal_delivery"],
+      "required": ["display", "runs_added", "wicket", "legal_delivery"],
       "properties": {
         "display": {
           "type": "string",
           "description": "Scoring-owned. Broadcast must not infer extras or wickets from other fields."
         },
         "runs_added": { "type": "integer" },
-        "wicket_counted": { "type": "boolean" },
+        "wicket": { "type": "boolean" },
         "legal_delivery": { "type": "boolean" }
       }
     }

@@ -64,7 +64,7 @@ def apply_ball(state: InningsState, event: BallEvent) -> tuple[InningsState, Sco
         last_event=LastEvent(
             display=_display(event, wicket_counted, runs_added),
             runs_added=runs_added,
-            wicket_counted=wicket_counted,
+            wicket=wicket_counted,
             legal_delivery=legal_delivery,
         ),
     )
