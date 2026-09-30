@@ -24,7 +24,7 @@ def test_four_increments_runs_and_legal_ball() -> None:
     _, snapshot = apply_ball(state, ball(runs_off_bat=4))
     assert snapshot.runs == 4
     assert snapshot.wickets == 0
-    assert snapshot.overs == "0.1"
+    assert snapshot.overs == 0.1
     assert snapshot.last_event.display == "FOUR"
     assert snapshot.last_event.legal_delivery is True
 
@@ -35,7 +35,7 @@ def test_wide_adds_extras_without_legal_ball() -> None:
         state, ball(extras={"type": "wide", "runs": 1})
     )
     assert snapshot.runs == 1
-    assert snapshot.overs == "0.0"
+    assert snapshot.overs == 0.0
     assert snapshot.last_event.display == "WIDE"
     assert snapshot.last_event.legal_delivery is False
 

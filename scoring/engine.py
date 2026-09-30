@@ -15,9 +15,9 @@ class InningsState:
     legal_balls: int = 0
 
 
-def format_overs(legal_balls: int) -> str:
+def format_overs(legal_balls: int) -> float:
     overs, balls = divmod(legal_balls, 6)
-    return f"{overs}.{balls}"
+    return float(f"{overs}.{balls}")
 
 
 def _display(event: BallEvent, wicket_counted: bool, runs_added: int) -> str:

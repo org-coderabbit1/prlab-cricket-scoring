@@ -8,7 +8,7 @@
     "match_id": { "type": "string" },
     "runs": { "type": "integer", "minimum": 0 },
     "wickets": { "type": "integer", "minimum": 0 },
-    "overs": { "type": "string" },
+    "overs": { "type": "number" },
     "last_event": {
       "type": "object",
       "additionalProperties": false,

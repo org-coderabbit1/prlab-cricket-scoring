@@ -21,5 +21,5 @@ class ScoreSnapshot(BaseModel):
     match_id: str
     runs: int
     wickets: int
-    overs: str
+    overs: float = Field(description="Overs bowled as a number, e.g. 12.3 for 12 overs and 3 balls.")
     last_event: LastEvent
