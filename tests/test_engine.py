@@ -25,7 +25,7 @@ def test_four_increments_runs_and_legal_ball() -> None:
     assert snapshot.runs == 4
     assert snapshot.wickets == 0
     assert snapshot.overs == "0.1"
-    assert snapshot.last_event.display == "FOUR"
+    assert snapshot.last_event.display == "4"
     assert snapshot.last_event.legal_delivery is True
 
 

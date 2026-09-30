@@ -5,7 +5,7 @@ from pydantic import BaseModel, Field
 
 class LastEvent(BaseModel):
     display: str = Field(
-        description="Scoring-owned label: DOT, runs, FOUR, SIX, WIDE, NO_BALL, WICKET, NOT_OUT."
+        description="Scoring-owned label: DOT, runs (1, 2, 4, 6, ...), WIDE, NO_BALL, WICKET, NOT_OUT."
     )
     runs_added: int
     wicket_counted: bool
